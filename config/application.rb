@@ -43,7 +43,7 @@ module BigSteamRobot
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
@@ -64,5 +64,8 @@ module BigSteamRobot
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # for deploying on Heroku
+    config.assets.initialize_on_precompile = false
   end
 end
