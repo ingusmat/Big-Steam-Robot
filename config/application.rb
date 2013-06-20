@@ -67,5 +67,6 @@ module BigSteamRobot
 
     # for deploying on Heroku
     config.assets.initialize_on_precompile = false
+    rake assets:precompile
   end
 end
