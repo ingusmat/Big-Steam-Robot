@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.13'
+gem 'heroku'
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
@@ -15,6 +17,10 @@ group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
+end
+
+group :production do
+  gem 'thin'
 end
 
 # Gems used only for assets and not required
