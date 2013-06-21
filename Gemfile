@@ -12,6 +12,7 @@ gem 'foreigner'
 gem 'annotate'
 gem 'figaro'
 gem 'simple_form'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -29,7 +30,6 @@ group :assets do
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
-  gem 'haml-rails'
   gem 'bootstrap-sass'
 end
 
