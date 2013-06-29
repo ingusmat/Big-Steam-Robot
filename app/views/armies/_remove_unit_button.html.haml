@@ -1,0 +1,4 @@
+- if current_user != nil
+  - if current_user.id == @army.user_id
+    %a{href: "#", class: "remove_unit", data: {'armyid' => @army[:id],
+                                   'armyunitid' => army_unit}}> -

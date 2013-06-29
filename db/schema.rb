@@ -11,7 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617050210) do
+ActiveRecord::Schema.define(:version => 20130627014650) do
+
+  create_table "armies", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "points"
+    t.integer  "faction_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "private"
+  end
+
+  create_table "army_units", :force => true do |t|
+    t.integer  "army_id"
+    t.integer  "unit_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "damage_grids", :force => true do |t|
+    t.integer  "unit_id"
+    t.string   "grid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "factions", :force => true do |t|
+    t.string   "name"
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "games", :force => true do |t|
+    t.string   "name"
+    t.string   "magic_name"
+    t.string   "caster_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +62,37 @@ ActiveRecord::Schema.define(:version => 20130617050210) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "statlines", :force => true do |t|
+    t.integer  "unit_id"
+    t.integer  "speed"
+    t.integer  "strength"
+    t.integer  "mat"
+    t.integer  "rat"
+    t.integer  "defense"
+    t.integer  "armor"
+    t.integer  "command"
+    t.integer  "magic"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "unit_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "units", :force => true do |t|
+    t.string   "name"
+    t.integer  "faction_id"
+    t.integer  "point_cost"
+    t.string   "field_allowance"
+    t.integer  "hit_points"
+    t.integer  "unit_type_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

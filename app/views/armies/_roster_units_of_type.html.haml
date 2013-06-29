@@ -1,0 +1,7 @@
+- army_units = @army.army_units.select { |army_unit| army_unit.unit.unit_type.name == unit_type }
+- army_units.each do |army_unit|
+  %tr>
+    %td>= army_unit.unit[:name]
+    %td>= army_unit.unit[:point_cost]
+    %td> +
+    %td>= render('armies/remove_unit_button', army_unit: army_unit.id)

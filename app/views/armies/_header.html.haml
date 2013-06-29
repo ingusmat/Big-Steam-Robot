@@ -1,0 +1,13 @@
+%header
+  %h1 #{@army.name}
+  %h3 #{@army.points} Point #{@army.faction.name} Army
+  %div.row-fluid
+    %h4.span6
+      %strong User:
+      = @army.user.name
+    %h4.span3
+      %strong 
+        = @army.private ? "Private" : "Public"
+    %h4.span3
+      = link_to 'Edit', edit_army_path(@army)
+

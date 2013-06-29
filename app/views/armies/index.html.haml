@@ -1,0 +1,25 @@
+%h1 Listing armies
+
+%table
+  %tr
+    %th Name
+    %th User
+    %th Points
+    %th Faction
+    %th
+    %th
+    %th
+
+  - @armies.each do |army|
+    %tr
+      %td= army.name
+      %td= army.user_id
+      %td= army.points
+      %td= army.faction_id
+      %td= link_to 'Show', army
+      %td= link_to 'Edit', edit_army_path(army)
+      %td= link_to 'Destroy', army, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Army list', new_army_path

@@ -1,0 +1,31 @@
+- if params[:type] == "1"
+  %table>
+    %tbody>
+      %th>
+      %th> Name
+      %th> Warjack Points
+
+      - @available_units.each do |unit|
+        %tr>
+          %td>
+            %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
+                                           'army_id' => @army.id}}> +
+          %td>= unit[:name]
+          %td>= "+#{unit[:point_cost]}"
+- else
+  %table>
+    %tbody>
+      %th>
+      %th> Name
+      %th> In List
+      %th> Points
+
+      - @available_units.each do |unit|
+        %tr>
+          %td>
+            %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
+                                           'army_id' => @army.id}}> +
+          %td>= unit[:name]
+          %td>= unit[:field_allowance]
+          %td>= unit[:point_cost]
+

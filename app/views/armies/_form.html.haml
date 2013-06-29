@@ -1,0 +1,13 @@
+= simple_form_for(@army) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.hidden_field :user_id, :value => current_user.id
+    = f.input :points
+    = f.label "Faction"
+    = f.collection_select :faction_id, Faction.all, :id, :name
+    = f.input :private
+
+  .form-actions
+    = f.button :submit

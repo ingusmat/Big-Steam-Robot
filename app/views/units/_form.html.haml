@@ -1,0 +1,15 @@
+= simple_form_for(@unit) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.label :faction_id, "Faction"
+    = f.collection_select :faction_id, Faction.all, :id, :name
+    = f.label :unit_type_id, "Model Type"
+    = f.collection_select :unit_type_id, UnitType.all, :id, :name
+    = f.input :point_cost
+    = f.input :field_allowance
+    = f.input :hit_points
+
+  .form-actions
+    = f.button :submit

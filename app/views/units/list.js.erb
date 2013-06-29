@@ -1,0 +1,5 @@
+$('#available').html("<%= render "units/available_units" %>");
+$(".add_to_list").click(function(e){
+  e.preventDefault();
+  $.post("/roster_units/create.js", {new_roster_unit: $(this).data()}, null, "script");
+})

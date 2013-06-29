@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %strong Name:
+  = @game.name
+%p
+  %strong #{@game.magic_name.titlecase} Mechanic
+
+%dl
+  %dt Factions:
+  - @game.faction.each do |faction|
+    %dd #{link_to faction.name, faction}
+
+= link_to 'Edit', edit_game_path(@game)
+\|
+= link_to 'Back', games_path

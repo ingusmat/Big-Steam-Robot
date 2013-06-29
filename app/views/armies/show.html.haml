@@ -1,0 +1,14 @@
+%article
+  = render "armies/header"
+
+  %div.row-fluid.article_body
+    %section#list.span6
+      = render "armies/list_table"
+    %section#available.span6
+      hi.
+
+= debug @army.units
+= debug @banned_unit_ids
+//= link_to 'Add Models', edit_army_roster_path(@army.army_roster)
+\| 
+= link_to 'Back', armies_path

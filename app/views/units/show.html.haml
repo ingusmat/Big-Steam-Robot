@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @unit.name
+%p
+  %b Faction:
+  = @unit.faction.name
+%p
+  %b Model Type:
+  = @unit.unit_type.name
+%p
+  %b Point cost:
+  = @unit.point_cost
+%p
+  %b Field allowance:
+  = @unit.field_allowance
+
+%p
+  %b Hit points:
+  = @unit.hit_points
+
+= link_to 'Edit', edit_unit_path(@unit)
+\|
+= link_to 'Back', units_path

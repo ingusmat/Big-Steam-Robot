@@ -1,0 +1,5 @@
+$('#available').html("<%= render "units/available_units" %>");
+$(".add_to_list").click(function(e){
+  e.preventDefault();
+  $.post("/armies/add_unit.js", {unit: $(this).data()}, null, "script");
+})

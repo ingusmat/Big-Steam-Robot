@@ -1,0 +1,25 @@
+%h3 Add Models
+
+%table
+  %tbody
+    - @unit_types.each do |unit_type|
+      %tr
+        %th
+          = unit_type.name.pluralize
+        %th PC
+        %th FA
+        %th In List
+        %th Add
+        - @unit_choices.each do |unit|
+          - if(unit.unit_type_id == unit_type.id)
+            %tr
+              %td
+                = unit.name
+              %td
+                = unit.point_cost
+              %td
+                = unit.field_allowance
+              %td current
+              %td
+                %a{href: "#", class: "edit-list-button"} +
+
