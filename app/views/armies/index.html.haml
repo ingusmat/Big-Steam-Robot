@@ -8,17 +8,16 @@
     %th Faction
     %th
     %th
-    %th
 
   - @armies.each do |army|
     %tr
-      %td= army.name
-      %td= army.user_id
+      %td= link_to army.name, army
+      %td= link_to army.user.name, user_path(army.user)
       %td= army.points
-      %td= army.faction_id
-      %td= link_to 'Show', army
-      %td= link_to 'Edit', edit_army_path(army)
-      %td= link_to 'Destroy', army, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= army.faction.name
+      - if current_user == army.user
+        %td= link_to 'Edit', edit_army_path(army)
+        %td= link_to 'Destroy', army, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -1,4 +1,5 @@
 class UnitsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
   def index
     @units = Unit.all
   end
@@ -8,7 +9,8 @@ class UnitsController < ApplicationController
   end
 
   def edit
-    @unit = Unit.new(params[:id])
+    authorize! :edit, @unit, :message => 'Not authorized to manage models'
+    @unit = Unit.find(params[:id])
   end
 
   def new
@@ -39,22 +41,6 @@ class UnitsController < ApplicationController
     redirect_to units_url
   end
 
-  def list_available_models
-    find_and_analyze_army(params[:armyid])
-    @available_units = available_units
-    respond_to do |format|
-      format.js
-    end
-  end
 
-  private
-
-  def available_units
-    if @banned_unit_ids.empty?
-      Unit.where('unit_type_id =? AND faction_id = ?', params[:type], params[:factionid])
-    else
-      Unit.where('unit_type_id =? AND faction_id = ?', params[:type], params[:factionid]).where('id not in (?)', @banned_unit_ids)
-    end
-  end
 
 end

@@ -1,3 +1,69 @@
 @import "bootstrap";
-body { padding-top: 60px }
+body {
+  padding-top: 60px;
+  background-color: #323639;
+}
 @import "bootstrap-responsive";
+
+/* keyframes for animation;  simple 0 to 360 */
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+header.navbar {
+  border-bottom: 4px solid black;
+}
+
+article {
+  header{
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Coustard', serif; 
+    color: #222;
+    background-color: #FDB031;
+    border-bottom: 4px solid black;
+    .container {
+      h1 {
+        margin-bottom: 4px;
+      }
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+  section#list {
+    background-color: rgba(200,200,200,0.5);
+    box-sizing: border-box;
+    table th,
+    table td {
+      padding: 5px;
+      text-align: left;
+    }
+  }
+}
+
+img.background-gear {
+  left: -35%;
+  opacity: 0.05;
+  position: absolute;
+  z-index: -10;
+	-webkit-animation-name: spin; 
+	-webkit-animation-duration: 100000ms; /* 40 seconds */
+	-webkit-animation-iteration-count: infinite; 
+	-webkit-animation-timing-function: linear;
+	animation-name: spin; 
+	animation-duration: 150000ms; /* 40 seconds */
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+}

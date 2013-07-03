@@ -1,12 +1,15 @@
-%table>
-  %tbody>
-    %tr>
+%table><
+  %tbody><
+    %tr><
+      = render('armies/list_points')
+    %tr><
       %th> Battlegroups
       %th>= render('armies/get_available_units_button', type: 1)
     = render('armies/roster_units_of_type', unit_type: 'caster')
     %tr>
       %th> Infantry
       %th>= render('armies/get_available_units_button', type: 3)
+    = render('armies/roster_units_of_type', unit_type: 'unit')
     %tr>
       %th> Solos
       %th>= render('armies/get_available_units_button', type: 2)
@@ -14,3 +17,5 @@
     %tr>
       %th> Battle Engines
       %th>= render('armies/get_available_units_button', type: 7)
+    = render('armies/roster_units_of_type', unit_type: 'battle engine')
+

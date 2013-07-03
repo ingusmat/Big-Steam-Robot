@@ -1,5 +1,3 @@
 $('#list').html("<%= render "armies/list_table" %>");
-$(".remove_unit").click(function(e){
-  e.preventDefault();
-  $.post("/army_units/destroy.js", $(this).data(), null, "script");
-})
+$('#available').html("<%= render "units/available_units" %>");
+<%= render('armies/button_scripts') %>

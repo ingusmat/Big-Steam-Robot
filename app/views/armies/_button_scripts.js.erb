@@ -1,0 +1,12 @@
+$(".add").click(function(e){
+  e.preventDefault();
+  $.post("/" + $(this).attr('data-controller') + "/" + $(this).attr('data-action') + ".js", $(this).data(), null, "script");
+})
+$(".remove_unit").click(function(e){
+  e.preventDefault();
+  $.post("/army_units/destroy.js", $(this).data(), null, "script");
+})
+$(".add_to_list").click(function(e){
+  e.preventDefault();
+  $.post("/armies/add_unit.js", {unit: $(this).data()}, null, "script");
+})

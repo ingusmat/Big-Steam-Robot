@@ -17,5 +17,6 @@ class Unit < ActiveRecord::Base
   attr_accessible :faction_id, :field_allowance, :hit_points, :name, :point_cost, :unit_type_id
   has_many :army_units
   has_many :armies, :through => :army_units
+  belongs_to :faction
   belongs_to :unit_type
 end

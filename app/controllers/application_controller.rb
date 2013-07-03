@@ -13,15 +13,33 @@ class ApplicationController < ActionController::Base
 
   def analyse_list
     @banned_unit_ids = []
-    points_used = 0
+    @points_used = 0
     @army.units.each do |unit|
       if unit.unit_type.name != 'caster'
-        points_used += unit.point_cost
+        @points_used += unit.point_cost
       end
       if unit.field_allowance == 'c'
         @banned_unit_ids << unit.id
       end
     end
     
+  end
+  
+  def list_available_models
+    find_and_analyze_army(params[:armyid])
+    @available_units = available_units
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
+
+  def available_units
+    if @banned_unit_ids.empty?
+      Unit.where('unit_type_id =? AND faction_id = ?', params[:type], params[:factionid]).where('point_cost <= (?)', (@army.points - @points_used))
+    else
+      Unit.where('unit_type_id =? AND faction_id = ?', params[:type], params[:factionid]).where('id not in (?)', @banned_unit_ids).where('point_cost <= (?)', (@army.points - @points_used))
+    end
   end
 end
