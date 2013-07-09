@@ -118,12 +118,35 @@ body.homepage {
 
 footer {
   bottom: 0;
+  color: black;
   width: 100%;
   border-top: 4px black solid;
   padding: 10px 0;
+  a,
+  a:visited {
+    color: #444444;
+    &:hover {
+      color: #666666;
+    }
+  }
+  a.btn,
+  a.btn:visited {
+    color: #dadada;
+    &:hover {
+      color: white;
+    }
+  }
+  img.license {
+    margin: 2px 10px 20px 0; 
+    float: left;
+  }
   small {
     font-size: 10px;
-    line-height: 10px;
+    line-height: 16px;
+    display: block;
+  }
+  p.github {
+    margin: 6px 0 10px 0;
   }
 }
 
