@@ -1,7 +1,8 @@
 @import "bootstrap";
 body {
-  padding-top: 44px;
+  padding-top: 64px;
   background: #FDB031 url("/images/bedge_grunge.png") repeat;
+  color: #cccccc;
 }
 @import "bootstrap-responsive";
 
@@ -13,6 +14,10 @@ body {
   to { 
     -webkit-transform: rotate(360deg);
   }
+}
+
+.alert {
+  margin-top: 20px;
 }
 
 @keyframes spin {
@@ -51,7 +56,38 @@ header{
       margin: 0;
     }
   }
+  &.navbar-fixed-top {
+    .navbar-inner {
+      border: 0;
+      background-color: transparent;
+      background-image: none;
+      @include box-shadow(0 0 0 0);
+      a,
+      a:visited {
+        color: black;
+        text-shadow: none;
+      }
+      a.brand {
+        font-family: 'Coustard', serif; 
+        font-size: 28px;
+        text-shadow: none; 
+      }
+      img.half-gear {
+        float: left;
+        margin: 1px 4px 0 0;
+        height: 36px;
+      }
+    }
+  }
 }
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: rgba(250, 250, 250, 0.4);
+  color: black;
+}
+
 article {
   section#list,
   section#available {
@@ -93,7 +129,6 @@ body.homepage {
   padding-top: 0;
   header {
     img.half-gear {
-      float: left;
       float: left;
       margin: 13px 10px 0 0;
       height: 237px;

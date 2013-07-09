@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
   def home
-    render layout: "homepage_no_user"
+    if current_user
+      @my_lists = Army.where("user_id = ?", current_user)
+    else
+      render layout: "homepage_no_user"
+    end
   end
 end

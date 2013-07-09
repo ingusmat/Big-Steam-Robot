@@ -12,13 +12,15 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    %img{class: "background-gear", src: "/images/gear1.svg"}
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container
           =  render 'layouts/navigation'
     #main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
-      %footer
-        =render 'layouts/footer'
+      %img{class: "background-gear", src: "/images/gear1.svg"}
+      .container
+        .content
+          = render 'layouts/messages'
+          = yield
+    %footer
+      =render 'layouts/footer'
