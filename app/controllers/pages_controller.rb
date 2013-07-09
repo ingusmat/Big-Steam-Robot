@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @users = User.all
+    render layout: "homepage_no_user"
   end
 end

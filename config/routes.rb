@@ -8,7 +8,11 @@ BigSteamRobot::Application.routes.draw do
   resources :games
   resources :units
   match '/units/list_available_models' => 'units#list_available_models'
+  match '/units/list_attachables' => 'units#list_attachables'
+  match '/units/available_attachments' => 'units#available_attachments'
   resources :factions
   devise_for :users
   resources :users
+  match '/attachments/create' => 'attachments#create'
+  match '/attachments/destroy' => 'attachments#destroy'
 end

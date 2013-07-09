@@ -1,3 +1,14 @@
-%h3 Home
-- @users.each do |user|
-  %p User: #{ link_to user.name, user }
+- content_for :header do
+  %img{class: "half-gear", src: "/images/half-gear.svg", alt: "half gear"}
+  %h1 BIG<br />STEAM<br />ROBOT
+  %h3 Social List Building and Collection Managing
+  %h4 for Warmachine and Hordes
+    
+%div.row-fluid.article_body
+  %section.span4.homepage-blurb
+    = render "users/sign_up"
+  %section.span4.homepage-blurb
+    = render "users/sign_in"
+  %section.span4.homepage-blurb
+    %h2 Get Building
+    %p Lots of stuff is currently functioning, especially if you don't like theme lists, for instance, or jack marshalls.  Or Mercs.  Find a bug? hit that big feedback button down in the footer.

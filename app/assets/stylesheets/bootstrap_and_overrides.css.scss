@@ -1,7 +1,7 @@
 @import "bootstrap";
 body {
-  padding-top: 60px;
-  background-color: #323639;
+  padding-top: 44px;
+  background: #FDB031 url("/images/bedge_grunge.png") repeat;
 }
 @import "bootstrap-responsive";
 
@@ -20,50 +20,139 @@ body {
 	to { transform: rotate(360deg); }
 }
 
+div.container {
+  position: relative;
+}
+
 header.navbar {
   border-bottom: 4px solid black;
 }
 
-article {
-  header{
-    padding: 10px;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Coustard', serif; 
-    color: #222;
-    background-color: #FDB031;
-    border-bottom: 4px solid black;
-    .container {
-      h1 {
-        margin-bottom: 4px;
-      }
-      h3 {
-        margin: 0;
-      }
+#main {
+  background: url("/images/wild_oliva.png") repeat #323639;
+  overflow: hidden;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+header{
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  color: #222;
+  background: #FDB031 url("/images/bedge_grunge.png") repeat;
+  border-bottom: 4px solid black;
+  .container {
+    h1 {
+      font-family: 'Coustard', serif; 
+      margin-bottom: 4px;
+    }
+    h3 {
+      margin: 0;
     }
   }
-  section#list {
-    background-color: rgba(200,200,200,0.5);
-    box-sizing: border-box;
-    table th,
-    table td {
-      padding: 5px;
-      text-align: left;
+}
+article {
+  section#list,
+  section#available {
+    table {
+      width: 100%;
+      border-bottom: 1px solid rgba(50,50,50,0.8);
+      margin-top: 10px;
+      background: rgba(200,200,200,0.5);
+      tr {
+        border-bottom: 1px solid rgba(50,50,50,0.8);
+        th,
+        td {
+          padding: 5px;
+          text-align: left;
+        }
+        a {
+          color: #cccccc;
+          &:hover {
+            color: white;
+          }
+        }
+        th {
+          background: rgba(100,100,100,.5);
+          color: black;
+        }
+      }
     }
   }
 }
 
 img.background-gear {
   left: -35%;
+  top: -150%;
   opacity: 0.05;
   position: absolute;
-  z-index: -10;
-	-webkit-animation-name: spin; 
-	-webkit-animation-duration: 100000ms; /* 40 seconds */
-	-webkit-animation-iteration-count: infinite; 
-	-webkit-animation-timing-function: linear;
-	animation-name: spin; 
-	animation-duration: 150000ms; /* 40 seconds */
-	animation-iteration-count: infinite; 
-	animation-timing-function: linear;
+}
+
+body.homepage {
+  padding-top: 0;
+  header {
+    img.half-gear {
+      float: left;
+      float: left;
+      margin: 13px 10px 0 0;
+      height: 237px;
+    }
+    h1 {
+      float: left;
+      font-size: 98px;
+      line-height: 84px;
+      color: black;
+    }
+    h3,
+    h4 {
+      clear: left;
+      margin-left: 132px;
+    }
+  }
+  section.homepage-blurb {
+    color: #cccccc;
+    margin-bottom: 20px;
+  }
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  border-top: 4px black solid;
+  padding: 10px 0;
+  small {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+
+form.sign-up,
+form.sign-in {
+  p {
+    position:relative
+    br { 
+      display: none 
+    }
+  }
+  div.control-group {
+    position: relative;
+    input {
+      background-color: #999;
+    }
+    label {
+      position:absolute; 
+      top: 4px; 
+      left: 4px; 
+      color: #444;
+    }
+    &.user_remember_me {
+      height: 30px;
+      label.control-label {
+        color: #cccccc;
+        display: inline;
+        margin-left: 20px;
+      }
+    }
+  }
 }

@@ -41,6 +41,14 @@ class UnitsController < ApplicationController
     redirect_to units_url
   end
 
-
+  def list_attachables
+    find_and_analyze_army(params[:unit][:armyid])
+    parent_unit = ArmyUnit.find(params[:unit][:armyunitid])
+    if parent_unit.unit.unit_type.name = 'caster'
+      unit_type = UnitType.where('name = ?', 'warjack').first
+      @available_attachments = Unit.where('faction_id = ? AND unit_type_id = ?', params[:unit][:factionid], unit_type.id)
+      @parent_unit = parent_unit
+    end
+  end
 
 end

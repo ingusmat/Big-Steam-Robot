@@ -2,6 +2,22 @@
 - army_units.each do |army_unit|
   %tr>
     %td>= army_unit.unit[:name]
-    %td>= army_unit.unit[:point_cost]
-    %td> +
+    - if unit_type == 'caster'
+      %td>= "+#{army_unit.unit[:point_cost]}"  
+    - else
+      %td>= army_unit.unit[:point_cost]  
+
     %td>= render('armies/remove_unit_button', army_unit: army_unit)
+    - if unit_type == 'caster'
+      %td>= render('units/list_available_attachments_button', army_unit: army_unit)
+    - else
+      %td><
+  - if army_unit.attachments
+    - army_unit.attachments.each do |attachment|
+      %tr><
+        %td><
+          &#149;
+          = attachment.unit[:name]
+        %td>= attachment.unit[:point_cost]
+        %td>= render('attachments/remove_attachment_button', attachment: attachment)
+        %td><

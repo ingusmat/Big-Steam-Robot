@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627014650) do
+ActiveRecord::Schema.define(:version => 20130705011910) do
 
   create_table "armies", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(:version => 20130627014650) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "army_unit_id"
+    t.integer  "unit_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "attachments", ["army_unit_id", "unit_id"], :name => "index_attachments_on_army_unit_id_and_unit_id"
 
   create_table "damage_grids", :force => true do |t|
     t.integer  "unit_id"

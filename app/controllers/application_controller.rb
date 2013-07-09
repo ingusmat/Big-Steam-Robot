@@ -14,12 +14,20 @@ class ApplicationController < ActionController::Base
   def analyse_list
     @banned_unit_ids = []
     @points_used = 0
-    @army.units.each do |unit|
-      if unit.unit_type.name != 'caster'
-        @points_used += unit.point_cost
+    @army.army_units.each do |army_unit|
+      if army_unit.unit.unit_type.name != 'caster'
+        @points_used += army_unit.unit.point_cost
+      else
+        battlegroup_points = 0
+        army_unit.units.each do |attachment|
+          battlegroup_points += attachment.point_cost
+        end
+        if battlegroup_points > army_unit.unit.point_cost
+          @points_used += (battlegroup_points - army_unit.unit.point_cost)
+        end
       end
-      if unit.field_allowance == 'c'
-        @banned_unit_ids << unit.id
+      if army_unit.unit.field_allowance == 'c'
+        @banned_unit_ids << army_unit.unit_id
       end
     end
     
