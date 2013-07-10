@@ -1,0 +1,12 @@
+%table
+  %tr
+    %th Name
+    %th Faction
+    %th Points
+  - @my_armies.each do |army|
+    %tr
+      %td= link_to army.name, army
+      %td= link_to army.faction.name, army.faction
+      %td= army.points
+
+= render "armies/new_army_button"

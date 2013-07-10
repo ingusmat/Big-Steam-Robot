@@ -1,17 +1,17 @@
-- content_for :header do
-  %img{class: "half-gear", src: "/images/half-gear.svg", alt: "half gear"}
-  %h1 BIG<br />STEAM<br />ROBOT
-  %h3 Social List Building and Collection Managing
-  %h4 for Warmachine and Hordes
 -if current_user
   %div.row-fluid.article_body
     %section.span6.homepage-blurb
-      %h2 My Lists
-      (list lists)
+      %h2 My Armies
+      = show_my_armies
     %section.span6.homepage-blurb
-      %h2 Newest Lists
-      (list lists)
+      %h2 Newest Armies
+      = show_public_armies
 -else    
+  - content_for :header do
+    %img{class: "half-gear", src: "/images/half-gear.svg", alt: "half gear"}
+    %h1 BIG<br />STEAM<br />ROBOT
+    %h3 Social List Building and Collection Managing
+    %h4 for Warmachine and Hordes
   %div.row-fluid.article_body
     %section.span4.homepage-blurb
       = render "users/sign_up"
@@ -20,3 +20,5 @@
     %section.span4.homepage-blurb
       %h2 Get Building
       %p Lots of stuff is currently functioning, especially if you don't like theme lists, for instance, or jack marshalls.  Or Mercs.  Find a bug? hit that big feedback button down in the footer.
+
+= debug(@public_armies)

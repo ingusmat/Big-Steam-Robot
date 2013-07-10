@@ -1,0 +1,12 @@
+%table
+  %tr
+    %th Name
+    %th User
+    %th Faction
+    %th Points
+  - @public_armies.each do |army|
+    %tr
+      %td= link_to army_name(army), army
+      %td= link_to army.user.name, army.user
+      %td= link_to army.faction.name, army.faction unless army.faction.nil?
+      %td= army.points

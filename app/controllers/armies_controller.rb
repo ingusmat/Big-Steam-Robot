@@ -2,7 +2,15 @@ class ArmiesController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :new]
 
   def index
-    @armies = Army.all
+    if params[:user]
+      if current_user[:id] == params[:user]
+        @armies = Army.where("user_id = ?", params[:user])
+      else
+        @armies = Army.where("user_id = ? AND private = ?", params[:user], false)
+      end
+    else
+      @armies = Army.where("private = ?", false)
+    end
   end
 
   def show

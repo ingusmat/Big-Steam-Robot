@@ -2,7 +2,7 @@
   .container
     .content
       %h1 #{@army.name}
-      %h3 #{@army.points} Point #{@army.faction.name} Army
+      %h3 #{@army.points} Point #{faction_name(@army)} Army
       %div.row-fluid
         %h4.span4
           %strong User:

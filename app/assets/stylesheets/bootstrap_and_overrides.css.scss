@@ -88,36 +88,32 @@ header{
   color: black;
 }
 
-article {
-  section#list,
-  section#available {
-    table {
-      width: 100%;
-      border-bottom: 1px solid rgba(50,50,50,0.8);
-      margin-top: 10px;
-      background: rgba(200,200,200,0.5);
-      tr {
-        border-bottom: 1px solid rgba(50,50,50,0.8);
-        th,
-        td {
-          padding: 5px;
-          text-align: left;
-        }
-        a {
-          color: #cccccc;
-          &:hover {
-            color: white;
-          }
-        }
-        th {
-          background: rgba(100,100,100,.5);
-          color: black;
-        }
+table {
+  width: 100%;
+  border-bottom: 1px solid rgba(50,50,50,0.8);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: rgba(200,200,200,0.3);
+  tr {
+    border-bottom: 1px solid rgba(50,50,50,0.8);
+    th,
+    td {
+      padding: 5px;
+      text-align: left;
+    }
+    a {
+      color: #cccccc;
+      &:hover {
+        color: white;
       }
+    }
+    th {
+      background: rgba(100,100,100,.3);
+      color: black;
     }
   }
 }
-
+  
 img.background-gear {
   left: -35%;
   top: -150%;

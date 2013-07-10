@@ -11,14 +11,17 @@
 
   - @armies.each do |army|
     %tr
-      %td= link_to army.name, army
+      %td= link_to army_name(army), army
       %td= link_to army.user.name, user_path(army.user)
       %td= army.points
-      %td= army.faction.name
+      %td= faction_name(army)
       - if current_user == army.user
         %td= link_to 'Edit', edit_army_path(army)
         %td= link_to 'Destroy', army, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - else
+        %td
+        %td
 
 %br
 
-= link_to 'New Army list', new_army_path
+= render "armies/new_army_button"
