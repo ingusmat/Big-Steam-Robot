@@ -1,9 +1,9 @@
 module ApplicationHelper
   def show_my_armies
     if @my_armies.nil?
-      render "armies/my_armies_table"
-    else
       render "armies/you_have_no_armies"
+    else
+      render "armies/my_armies_table"
     end
   end
 
