@@ -4,12 +4,12 @@ class ArmiesController < ApplicationController
   def index
     if params[:user]
       if current_user[:id] == params[:user]
-        @armies = Army.where("user_id = ?", params[:user])
+        @armies = Army.where("user_id = ?", params[:user]).order("created_at DESC")
       else
-        @armies = Army.where("user_id = ? AND private = ?", params[:user], false)
+        @armies = Army.where("user_id = ? AND private = ?", params[:user], false).order("created_at DESC")
       end
     else
-      @armies = Army.where("private = ?", false)
+      @armies = Army.where("private = ?", false).order("created_at DESC")
     end
   end
 

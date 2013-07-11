@@ -1,7 +1,12 @@
 class UnitsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   def index
-    @units = Unit.all
+    if params[:faction]
+      @units = Unit.where("faction_id = ?", params[:faction])
+      @faction = Faction.find(params[:faction])
+    else
+      @units = Unit.all
+    end
   end
 
   def show

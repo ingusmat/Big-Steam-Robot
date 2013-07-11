@@ -1,25 +1,20 @@
-%h1 Listing units
+%h1 #{@faction.name} Models
 
 %table
-  %tr
-    %th Name
-    %th Faction
-    %th Point cost
-    %th Field allowance
-    %th
-    %th
-    %th
-
-  - @units.each do |unit|
+  - ['caster', 'unit', 'solo', 'attachment', 'battle engine'].each do |unit_type|
     %tr
-      %td= unit.name
-      %td= unit.faction_id
-      %td= unit.point_cost
-      %td= unit.field_allowance
-      %td= link_to 'Show', unit
-      %td= link_to 'Edit', edit_unit_path(unit)
-      %td= link_to 'Destroy', unit, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+      %th= unit_type.pluralize
+      %th Point cost
+      %th Field allowance
+      %th
+      %th
+    - units_of_type = @units.select { |unit| unit.unit_type.name == unit_type }
+    - units_of_type.each do |unit|
+      %tr
+        %td= link_to unit.name, unit
+        %td= unit.point_cost
+        %td= unit.field_allowance
+        %td= link_to 'Edit', edit_unit_path(unit)
+        %td= link_to 'Destroy', unit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'New Unit', new_unit_path

@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_filter :get_factions
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
+
   
   def find_and_analyze_army(army_id)
     @army = Army.find(army_id)
@@ -50,4 +52,9 @@ class ApplicationController < ActionController::Base
       Unit.where('unit_type_id =? AND faction_id = ?', params[:type], params[:factionid]).where('id not in (?)', @banned_unit_ids).where('point_cost <= (?)', (@army.points - @points_used))
     end
   end
+
+  def get_factions
+    @factions = Faction.all
+  end
+
 end
