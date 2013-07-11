@@ -4,6 +4,11 @@ class UnitsController < ApplicationController
     if params[:faction]
       @units = Unit.where("faction_id = ?", params[:faction])
       @faction = Faction.find(params[:faction])
+      if @faction.game_id == 1
+        @unit_types = ['caster', 'warjack', 'unit', 'solo', 'attachment', 'battle engine']
+      else
+        @unit_types = ['caster', 'warbeast', 'unit', 'solo', 'attachment', 'battle engine']
+      end
     else
       @units = Unit.all
     end

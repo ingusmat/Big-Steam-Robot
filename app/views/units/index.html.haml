@@ -1,7 +1,7 @@
 %h1 #{@faction.name} Models
 
 %table
-  - ['caster', 'unit', 'solo', 'attachment', 'battle engine'].each do |unit_type|
+  -@unit_types.each do |unit_type|
     %tr
       %th= unit_type.pluralize
       %th Point cost
