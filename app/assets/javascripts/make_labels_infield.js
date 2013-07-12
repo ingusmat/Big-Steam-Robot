@@ -1,3 +1,4 @@
 $(document).ready(function(){
-  $("label").inFieldLabels();
+  $(".sign-up label").inFieldLabels();
+  $(".sign-in label").inFieldLabels();
 });
