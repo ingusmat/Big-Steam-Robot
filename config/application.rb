@@ -66,6 +66,6 @@ module BigSteamRobot
     config.assets.version = '1.0'
 
     # for deploying on Heroku
-    config.assets.initialize_on_precompile = true
+    config.assets.initialize_on_precompile = false
   end
 end
