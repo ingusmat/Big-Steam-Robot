@@ -16,6 +16,6 @@ class Army < ActiveRecord::Base
   attr_accessible :faction_id, :name, :points, :user_id, :private
   belongs_to :user
   belongs_to :faction
-  has_many :army_units
+  has_many :army_units, dependent: :destroy
   has_many :units, through: :army_units
 end
