@@ -107,6 +107,9 @@ table {
   background: rgba(200,200,200,0.3);
   tr {
     border-bottom: 1px solid rgba(50,50,50,0.8);
+    &.total-points {
+      border-top: 2px solid rgba(50,50,50,0.8);
+    }
     th,
     td {
       padding: 5px;
@@ -120,7 +123,22 @@ table {
     }
     th {
       background: rgba(100,100,100,.3);
-      color: black;
+      color: #aaaaaa;
+      &.point-cost {
+        color: white;
+        border-left: 1px #555555 solid;
+      }
+    }
+    td {
+      color: white;
+      &.point-cost,
+      &.button {
+        border-left: 1px #555555 solid;
+        width: 20px;
+      }
+      &.point-cost {
+        text-align: right;
+      }
     }
   }
 }
@@ -227,3 +245,10 @@ form.sign-in {
   background-color: transparent;
   border-top: none;
 }
+
+.hidden {
+  visibility: hidden;
+  display: none;
+  height: 0;
+}
+

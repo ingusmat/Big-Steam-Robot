@@ -13,6 +13,7 @@ class ArmyUnit < ActiveRecord::Base
   attr_accessible :army_id, :unit_id
   belongs_to :unit
   belongs_to :army
-  has_many :attachments
-  has_many :units, :through => :attachments
+  has_many :attachments, foreign_key: 'parent_army_unit_id', dependent: :destroy
+  has_many :parent_army_units, :through => :attachments, :class_name => "ArmyUnit"
+  has_many :child_army_units, :through => :attachments, :class_name => "ArmyUnit", dependent: :destroy
 end

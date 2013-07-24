@@ -9,7 +9,10 @@
         %tr>
           %td>
             %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
-                                           'army_id' => @army.id}}> +
+                                           'controller' => 'army_units',
+                                           'action' => 'create',
+                                           'army_id' => @army.id}}>
+              %i{ class: 'icon-circle-arrow-left' }>
           %td>= unit[:name]
           %td>= "+#{unit[:point_cost]}"
 - else
@@ -24,7 +27,10 @@
         %tr>
           %td>
             %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
-                                           'army_id' => @army.id}}> +
+                                           'controller' => 'army_units',
+                                           'action' => 'create',
+                                           'army_id' => @army.id}}>
+              %i{ class: 'icon-circle-arrow-left' }>
           %td>= unit[:name]
           %td>= unit[:field_allowance]
           %td>= unit[:point_cost]

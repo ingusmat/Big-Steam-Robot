@@ -3,9 +3,9 @@ $(document).ready(function(){
     e.preventDefault();
     $.post("/" + $(this).attr('data-controller') + "/" + $(this).attr('data-action') + ".js", $(this).data(), null, "script");
   })
-  $(".remove_unit").click(function(e){
+  $(".remove").click(function(e){
     e.preventDefault();
-    $.post("/army_units/destroy.js", $(this).data(), null, "script");
+    $.post("/" + $(this).attr('data-controller') + "/" + $(this).attr('data-action') + ".js", $(this).data(), null, "script");
   })
   $(".attach_unit").click(function(e){
     e.preventDefault();
@@ -18,6 +18,10 @@ $(document).ready(function(){
   $(".list_attachables").click(function(e){
     e.preventDefault();
     $.post("/units/list_attachables.js", {unit: $(this).data()}, null, "script");
+  })
+  $(".min-max-toggle").click(function(e){
+    e.preventDefault();
+    $.post("/army_units/min_max_unit_toggle.js", $(this).data(), null, "script");
   })
 
 });

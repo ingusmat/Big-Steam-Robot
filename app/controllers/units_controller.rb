@@ -48,7 +48,7 @@ class UnitsController < ApplicationController
   def destroy
     @unit = Unit.find(params[:id])
     @unit.destroy
-    redirect_to units_url
+    redirect_to :back, notice: "The model #{@unit.name} has been removed."
   end
 
   def list_attachables

@@ -10,7 +10,8 @@
         %td>
           %a{href: "#", class: "attach_unit", data: {'attached_unit_id' => unit[:id],
             'army_id' => @army.id,
-            'army_unit_id' => @parent_unit.id}}> +
+            'army_unit_id' => @parent_unit.id}}>
+            %i{ class: 'icon-circle-arrow-left' }>
         %td>= unit[:name]
         %td>= unit[:field_allowance]
         %td>= unit[:point_cost]

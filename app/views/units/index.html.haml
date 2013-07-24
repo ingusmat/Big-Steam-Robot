@@ -4,7 +4,16 @@
   -@unit_types.each do |unit_type|
     %tr
       %th= unit_type.pluralize
-      %th Point cost
+      - if unit_type == "unit"
+        %th Min cost
+        %th Max cost
+      - elsif unit_type == "caster"
+        - if @units[0][:faction_id] <= 7
+          %th{colspan: 2} Warjack Points
+        - else
+          %th{colspan: 2} Warbeast Points
+      - else
+        %th{colspan: 2} Point Cost
       %th Field allowance
       %th
       %th
@@ -12,9 +21,14 @@
     - units_of_type.each do |unit|
       %tr
         %td= link_to unit.name, unit
-        %td= unit.point_cost
+        - if unit.unit_type.name == "unit"
+          %td= unit.point_cost
+          %td= unit.max_point_cost
+        - else
+          %td{colspan: 2}= unit.point_cost
         %td= unit.field_allowance
         %td= link_to 'Edit', edit_unit_path(unit)
-        %td= link_to 'Destroy', unit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        -if can? :manage, :all
+          %td= link_to 'Destroy', unit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Unit', new_unit_path
+= link_to 'Add new unit to database', new_unit_path, class: "btn btn-primary"

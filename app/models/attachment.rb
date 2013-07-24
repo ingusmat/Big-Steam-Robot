@@ -10,8 +10,9 @@
 #
 
 class Attachment < ActiveRecord::Base
-  attr_accessible :army_unit_id, :unit_id
+  attr_accessible :parent_army_unit_id, :child_army_unit_id
 
-  belongs_to :army_unit
-  belongs_to :unit
+  belongs_to :parent_army_unit, foreign_key: 'parent_army_unit_id', class_name: 'ArmyUnit'
+
+  belongs_to :child_army_unit, foreign_key: 'child_army_unit_id', class_name: 'ArmyUnit', dependent: :destroy
 end

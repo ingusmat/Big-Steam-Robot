@@ -1,0 +1,29 @@
+- army_units = @army.army_units.select { |army_unit| army_unit.unit.unit_type.name == unit_type }
+- army_units.each do |army_unit|
+  %tr><
+    %td.unit-name><
+      = army_unit.unit[:name]
+      - if army_unit.unit.max_point_cost
+        - if army_unit.max_unit
+          &nbsp;(Max)
+        - else
+          &nbsp;(Min)
+    - if unit_type == 'caster'
+      %td.point-cost><= "+#{army_unit.unit[:point_cost]}"  
+    - elsif unit_type == 'unit'
+      - if army_unit.unit.max_point_cost
+        - if army_unit.max_unit
+          %td.point-cost><= army_unit.unit.max_point_cost
+        - else
+          %td.point-cost><= army_unit.unit.point_cost
+    - else
+      %td.point-cost><= army_unit.unit[:point_cost]  
+    = render 'armies/list_buttons/button_group', level: 'unit', unit_type: unit_type, army_unit: army_unit
+
+  - if army_unit.attachments
+    - army_unit.attachments.each do |attachment|
+      %tr><
+        %td.unit-name.attachment><
+          = attachment.child_army_unit.unit[:name]
+        %td.point-cost><= attachment.child_army_unit.unit[:point_cost]
+        = render 'armies/list_buttons/button_group', level: 'attachment', unit_type: attachment.child_army_unit.unit.unit_type, attachment: attachment

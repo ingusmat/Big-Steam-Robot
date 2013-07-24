@@ -1,13 +1,31 @@
 %h2= @unit.name
+%h4= @unit.faction.name + " " + @unit.unit_type.name
 %p
-  %b Faction:
-  = @unit.faction.name
+  - if @unit.unit_type.name == 'unit'
+    - if @unit.max_point_cost.nil?
+      %b Point Cost:
+      = @unit.point_cost
+    - else
+      %b Min-Unit Point Cost: 
+      = @unit.point_cost
+      %br
+      %b Max-Unit Point Cost: 
+      = @unit.max_point_cost
+  - elsif @unit.unit_type.name == 'caster'
+    - if @unit.faction_id <= 7
+      %b Warjack Points:
+    - else
+      %b Warbeast Points:
+    = @unit.point_cost
+  - else
+    %p
+      %b Point cost:
+      = @unit.point_cost
 %p
-  %b Model Type:
-  = @unit.unit_type.name
-%p
-  %b Point cost:
-  = @unit.point_cost
+  - unless @unit.parent_unit_id.nil?
+    %b Attaches to:
+    = link_to @unit.parent_unit.name, @unit.parent_unit
+
 %p
   %b Field allowance:
   = @unit.field_allowance
@@ -17,5 +35,42 @@
   = @unit.hit_points
 
 = link_to 'Edit', edit_unit_path(@unit)
-\|
-= link_to 'Back', units_path
+
+- @unit.child_units.each do |unit|
+  %h3= unit.name
+  %h4= unit.faction.name + " " + @unit.unit_type.name + " " + unit.unit_type.name
+  %p
+    - if unit.unit_type.name == 'unit'
+      - if unit.max_point_cost.nil?
+        %b Point Cost:
+        = unit.point_cost
+      - else
+        %b Min-Unit Point Cost: 
+        = unit.point_cost
+        %br
+        %b Max-Unit Point Cost: 
+        = unit.max_point_cost
+    - elsif unit.unit_type.name == 'caster'
+      - if unit.faction_id <= 7
+        %b Warjack Points:
+      - else
+        %b Warbeast Points:
+      = unit.point_cost
+    - else
+      %p
+        %b Point cost:
+        = unit.point_cost
+  %p
+    - unless unit.parent_unit_id.nil?
+      %b Attaches to:
+      = unit.parent_unit.name
+
+  %p
+    %b Field allowance:
+    = unit.field_allowance
+
+  %p
+    %b Hit points:
+    = unit.hit_points
+
+  = link_to 'Edit', edit_unit_path(unit)

@@ -1,0 +1,6 @@
+- if army_unit.max_unit
+  %a{href: '#', class: 'btn btn-warning btn-small min-max-toggle', data: {army_id: @army[:id], army_unit_id: army_unit[:id]}}>< 
+    %i.icon-chevron-sign-down><
+- else
+  %a{href: '#', class: 'btn btn-primary btn-small min-max-toggle', data: {army_id: @army[:id], army_unit_id: army_unit[:id]}}>< 
+    %i.icon-chevron-sign-up><

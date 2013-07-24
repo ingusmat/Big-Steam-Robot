@@ -1,0 +1,8 @@
+$(".add_to_list").click(function(e){
+  e.preventDefault();
+  $.post("/" + $(this).attr('data-controller') + "/" + $(this).attr('data-action') + ".js", $(this).data(), null, "script");
+})
+$(".attach_unit").click(function(e){
+  e.preventDefault();
+  $.post("/attachments/create.js", $(this).data(), null, "script");
+})

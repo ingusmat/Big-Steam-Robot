@@ -1,21 +1,15 @@
 %table><
   %tbody><
-    %tr><
-      = render('armies/list_points')
-    %tr><
-      %th{colspan: 3}> Battlegroups
-      %th>= render('armies/get_available_units_button', type: 1)
-    = render('armies/roster_units_of_type', unit_type: 'caster')
-    %tr>
-      %th{colspan: 3}> Infantry
-      %th>= render('armies/get_available_units_button', type: 3)
-    = render('armies/roster_units_of_type', unit_type: 'unit')
-    %tr>
-      %th{colspan: 3}> Solos
-      %th>= render('armies/get_available_units_button', type: 2)
-    = render('armies/roster_units_of_type', unit_type: 'solo')
-    %tr>
-      %th{colspan: 3}> Battle Engines
-      %th>= render('armies/get_available_units_button', type: 7)
-    = render('armies/roster_units_of_type', unit_type: 'battle engine')
 
+    - ['caster', 'unit', 'solo', 'battle engine'].each do |unit_type|
+      %tr><
+        %th><
+          - if unit_type == 'caster'
+            Battlegroups
+          - else
+            = unit_type.titlecase.pluralize
+          %td.button><
+        = render 'armies/list_buttons/button_group', level: 'header', unit_type: unit_type 
+      = render('armies/list_table/roster_units_of_type', unit_type: unit_type)
+    %tr.total-points><
+      = render('armies/list_points')

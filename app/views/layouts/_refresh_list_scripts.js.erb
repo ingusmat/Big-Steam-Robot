@@ -10,14 +10,6 @@ $(".list_attachables").click(function(e){
   e.preventDefault();
   $.post("/units/list_attachables.js", {unit: $(this).data()}, null, "script");
 })
-$(".add_to_list").click(function(e){
-  e.preventDefault();
-  $.post("/armies/add_unit.js", {unit: $(this).data()}, null, "script");
-})
-$(".attach_unit").click(function(e){
-  e.preventDefault();
-  $.post("/attachments/create.js", $(this).data(), null, "script");
-})
 $(".remove_attachment").click(function(e){
   e.preventDefault();
   $.post("/attachments/destroy.js", $(this).data(), null, "script");

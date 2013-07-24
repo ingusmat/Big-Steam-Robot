@@ -46,17 +46,7 @@ class ArmiesController < ApplicationController
   def destroy
     @army = Army.find(params[:id])
     @army.destroy
-    redirect_to army_url
-  end
-
-  def add_unit
-    @army = Army.find(params[:unit][:armyId])
-    @army.army_units.create(unit_id: params[:unit][:unitId], army_id: params[:unit][:armyId])
-    added_unit = Unit.find(params[:unit][:unitId])
-    params[:type] = added_unit.unit_type.id
-    params[:factionid] = @army.faction_id
-    find_and_analyze_army(params[:unit][:armyId])
-    @available_units = available_units
+    redirect_to armies_url
   end
 
   private

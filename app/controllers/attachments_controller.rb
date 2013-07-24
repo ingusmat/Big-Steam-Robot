@@ -1,7 +1,8 @@
 class AttachmentsController < ApplicationController
   def create
-    
-    attachment = Attachment.new(army_unit_id: params[:armyUnitId], unit_id: params[:attachedUnitId])
+    new_army_unit = ArmyUnit.new(unit_id: params[:attachedUnitId], army_id: params[:armyId])
+    new_army_unit.save
+    attachment = Attachment.new(parent_army_unit_id: params[:armyUnitId], child_army_unit_id: new_army_unit[:id])
     if attachment.save
       find_and_analyze_army(params[:armyId])
       @available_units = available_units

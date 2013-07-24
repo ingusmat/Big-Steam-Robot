@@ -7,8 +7,12 @@
     = f.collection_select :faction_id, Faction.all, :id, :name
     = f.label :unit_type_id, "Model Type"
     = f.collection_select :unit_type_id, UnitType.all, :id, :name
+    = f.label :parent_unit_id, "Attaches to"
+    = f.collection_select :parent_unit_id, Unit.where('unit_type_id = ?', 3), :id, :name, include_blank: true
     = f.label :point_cost, "Point cost (or Jack / Beast points)"
-    = f.number_field :point_cost, min: 0
+    = f.number_field :point_cost, min: 0    
+    = f.label :max_point_cost, "Max-Unit Points"
+    = f.number_field :max_point_cost, min: 0
     = f.label :field_allowance, "Field Allowance (number, 'c', or 'u')"
     = f.text_field :field_allowance
     = f.label :hit_points, "Hit points"
@@ -16,4 +20,4 @@
     = f.input :jack_marshall
 
   .form-actions
-    = f.button :submit, class: 'btn btn-success'
+    = f.button :submit, class: 'btn btn-primary'

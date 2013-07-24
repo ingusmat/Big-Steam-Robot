@@ -1,7 +1,0 @@
-- if current_user != nil
-  - if current_user.id == @army.user_id
-    %a{href: "#", class: "add", data: {'controller' => 'units',
-                                   'action' => 'list_available_models',
-                                   'armyid' => @army[:id],
-                                   'type' => type,
-                                   'factionid' => @army[:faction_id]}}> +

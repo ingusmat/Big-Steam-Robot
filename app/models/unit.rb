@@ -14,9 +14,11 @@
 #
 
 class Unit < ActiveRecord::Base
-  attr_accessible :faction_id, :field_allowance, :hit_points, :name, :point_cost, :unit_type_id, :jack_marshall
+  attr_accessible :faction_id, :field_allowance, :hit_points, :name, :point_cost, :unit_type_id, :jack_marshall, :parent_unit_id, :max_point_cost
   has_many :army_units
   has_many :armies, :through => :army_units
+  has_many :child_units, :foreign_key => 'parent_unit_id', :class_name => "Unit", dependent: :destroy
+  belongs_to :parent_unit, :foreign_key => 'parent_unit_id', :class_name => "Unit"
   belongs_to :faction
   belongs_to :unit_type
 end
