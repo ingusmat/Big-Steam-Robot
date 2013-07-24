@@ -9,7 +9,5 @@
       %td= link_to army_name(army), army
       - if army.user 
         %td= link_to army.user.name, army.user
-      - else 
-        = debug army
       %td= link_to army.faction.name, army.faction unless army.faction.nil?
       %td= army.points
