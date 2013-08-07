@@ -1,9 +1,9 @@
 -if current_user
   %div.row-fluid.article_body
-    %section.span6.homepage-blurb
+    %article.span6.homepage-blurb
       %h2 My Armies
       = show_my_armies
-    %section.span6.homepage-blurb
+    %article.span6.homepage-blurb
       %h2 Newest Armies
       = show_public_armies
 -else    
@@ -13,11 +13,11 @@
     %h3 Social List Building and Collection Managing
     %h4 for Warmachine and Hordes
   %div.row-fluid.article_body
-    %section.span4.homepage-blurb
+    %article.span4.homepage-blurb
       = render "users/sign_up"
-    %section.span4.homepage-blurb
+    %article.span4.homepage-blurb
       = render "users/sign_in"
-    %section.span4.homepage-blurb
+    %article.span4.homepage-blurb
       %h2 Get Building
       %p Lots of stuff is currently functioning, especially if you don't like theme lists, for instance, or jack marshalls.  Or Mercs.  Find a bug? hit that big feedback button down in the footer.
 

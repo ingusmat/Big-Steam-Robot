@@ -1,0 +1,8 @@
+%header.article-header.row-fluid
+  %h1.span8
+    = @army.name
+  %h2.span4
+    #{@army.points} Point #{faction_name(@army).split(/ /)[0]} Army
+    %span.edit
+      = link_to edit_army_path(@army), class: 'btn btn-mini btn-warning' do
+        %i.icon-edit

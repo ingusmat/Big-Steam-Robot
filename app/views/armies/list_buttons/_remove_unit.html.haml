@@ -1,7 +1,7 @@
-%a{href: "#", class: "btn btn-warning btn-small remove", data: {'army_id' => @army[:id],
+%a{href: "#", class: "btn btn-danger btn-mini remove", data: {'army_id' => army_unit.army[:id],
   'controller' => 'army_units',
   'action' => 'destroy',
   'army_unit_id' => army_unit.id,
   'type' => army_unit.unit.unit_type_id,
-  'faction_id' => @army.faction_id}}><
-  %i{ class: 'icon-minus-sign-alt' }>
+  'faction_id' => army_unit.army.faction_id}}><
+  %i{ class: 'icon-remove' }>

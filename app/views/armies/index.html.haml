@@ -16,12 +16,17 @@
       %td= army.points
       %td= faction_name(army)
       - if current_user == army.user
-        %td= link_to 'Edit', edit_army_path(army)
-        %td= link_to 'Destroy', army, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to edit_army_path(army), class: 'btn btn-warning btn-mini min-max-toggle' do
+            %i.icon-edit 
+            Edit
+        %td
+          = link_to army, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-mini min-max-toggle' do
+            %i.icon-remove 
+            Delete
       - else
         %td
         %td
-
 %br
 
 = render "armies/new_army_button"

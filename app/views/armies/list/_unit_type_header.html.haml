@@ -1,0 +1,17 @@
+%h2
+  %span.list-category-name
+    - if unit_type == 'caster'
+      = caster_type(@army.faction).titlecase.pluralize + ' & Battlegroups'
+    - elsif unit_type == 'battle engine'
+      = unit_type.titlecase.pluralize
+    - else
+      = "Infantry " + unit_type.titlecase.pluralize
+  = render 'armies/list_buttons/button_group', level: 'header', unit_type: unit_type 
+  %span.point-cost
+    - if unit_type == 'caster'
+      - if @army.faction.game.id == 1
+        = 'Jack Points'
+      - else
+        = 'Beast Points'
+    - else
+      = 'Point Cost'

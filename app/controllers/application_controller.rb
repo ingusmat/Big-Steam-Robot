@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
   
   def list_available_models
     find_and_analyze_army(params[:armyId])
+    @unit_type = params[:unitType]
+    @dom_parent_id = params[:domParentId]
     @available_units = available_units
     respond_to do |format|
       format.js

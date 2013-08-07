@@ -1,0 +1,38 @@
+@import "mixins";
+
+form.sign-up,
+form.sign-in {
+  p {
+    position:relative
+    br { 
+      display: none 
+    }
+  }
+  div.control-group {
+    position: relative;
+    input {
+      background-color: #999;
+    }
+    label {
+      position:absolute; 
+      top: 4px; 
+      left: 4px; 
+      color: #444;
+    }
+    &.user_remember_me {
+      height: 30px;
+      label.control-label {
+        color: #cccccc;
+        display: inline;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.form-actions {
+  padding: 0;
+  background-color: transparent;
+  border-top: none;
+}
+

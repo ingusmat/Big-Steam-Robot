@@ -1,2 +1,7 @@
-$('#available').html("<%= render "units/available_units" %>");
-<%= render('layouts/refresh_options_scripts') %>
+$("#<%= @army.id.to_s %>_<%= @unit_type.pluralize %>").prepend("<%= escape_javascript(render 'units/available_units') %>");
+
+$("#<%= @army.id.to_s %>_available_<%= @unit_type.pluralize %> a.add_to_list").click(function(e){
+  e.preventDefault();
+  var data = $(this).data();
+  $.post("/" + $(this).attr('data-controller') + "/" + $(this).attr('data-action') + ".js", $(this).data(), null, "script");
+})

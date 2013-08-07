@@ -1,0 +1,8 @@
+%section#army_meta.span4
+  %h4
+    %strong User:
+    = @army.user.name
+  %h4
+    %strong 
+      = @army.private ? "Private" : "Public"
+  = render('armies/list/points')

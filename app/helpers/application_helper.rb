@@ -19,4 +19,11 @@ module ApplicationHelper
     (army.faction.nil? ? '' : army.faction.name)
   end
 
+  def caster_type(faction)
+    if faction.game.name == 'Warmachine'
+      "warcaster"
+    else
+      "warlock"
+    end
+  end
 end

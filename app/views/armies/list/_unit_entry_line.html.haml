@@ -1,0 +1,19 @@
+%li{ id: "army_unit_" + army_unit.id.to_s, class: "unit_entry unit-" + army_unit.unit.id.to_s }
+  %span.unit-name<
+    = army_unit.unit[:name]
+    - if army_unit.unit.max_point_cost
+      - if army_unit.max_unit
+        &nbsp;(Max)
+      - else
+        &nbsp;(Min)
+  = render 'armies/list_buttons/button_group', level: 'unit', unit_type: unit_type, army_unit: army_unit
+  - if unit_type == 'caster'
+    %span.point-cost= "+#{army_unit.unit[:point_cost]}"  
+  - elsif unit_type == 'unit'
+    - if army_unit.unit.max_point_cost
+      - if army_unit.max_unit
+        %span.point-cost= army_unit.unit.max_point_cost
+      - else
+        %span.point-cost= army_unit.unit.point_cost
+  - else
+    %span.point-cost= army_unit.unit[:point_cost]  

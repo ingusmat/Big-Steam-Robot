@@ -1,3 +1,8 @@
-$('#list').html("<%= render "armies/list_table" %>");
-$('#available').html("<%= render "units/available_units" %>");
-<%= render('armies/button_scripts') %>
+$("#<%= @army_unit.army_id.to_s %>_<%= @army_unit.unit.unit_type.name.pluralize %>").append("<%= escape_javascript(render 'armies/list/unit_entry_line', army_unit: @army_unit, unit_type: @army_unit.unit.unit_type.name) %>")
+<% if @army_unit.unit.field_allowance == "c" %>
+  $(".available-<%= @army_unit.unit.id.to_s %>").remove();
+<% elsif @army_unit.unit.field_allowance =~ /^(\d+)$/ %>
+  if($(".unit-<%= @army_unit.unit.id.to_s %>").length >= <%= @army_unit.unit.field_allowance %>){
+    $(".available-<%= @army_unit.unit.id.to_s %>").remove();
+  }
+<% end %>

@@ -1,0 +1,5 @@
+%section.army-list.span8
+  - ['caster', 'unit', 'solo', 'battle engine'].each do |unit_type|
+    = render 'armies/list/unit_type_header', unit_type: unit_type
+    %ul{id: @army.id.to_s + '_' + unit_type.pluralize, class: 'unit-group ' + unit_type.pluralize}
+      = render('armies/list/army_units_of_type', unit_type: unit_type)

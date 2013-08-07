@@ -1,0 +1,37 @@
+body.homepage {
+  padding-top: 0;
+  header {
+    padding: 10px 0 30px 0;
+    margin: 20px 0 0 0;
+    img.half-gear {
+      float: left;
+      margin: 13px 10px 0 0;
+      height: 237px;
+    }
+    h1 {
+      float: left;
+      font-size: 98px;
+      line-height: 84px;
+      color: black;
+    }
+    h3,
+    h4 {
+      clear: left;
+      margin: 0 0 0 132px !important;
+    }
+  }
+}
+article.homepage-blurb {
+  color: #cccccc;
+  min-height: 330px;
+  background-color: rgba(0,0,0,0.2);
+  table {
+    margin-bottom: 10px;
+  }
+}
+
+.homepage-no-user {
+  #main {
+    min-height: 200px;
+  }
+}

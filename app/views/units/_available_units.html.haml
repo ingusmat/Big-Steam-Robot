@@ -1,37 +1,26 @@
-- if params[:type] == "1"
-  %table>
-    %tbody>
-      %th>
-      %th> Name
-      %th> Warjack Points
-
+%li{ id: @army.id.to_s + '_available_' + @unit_type.pluralize, class: 'available-models' }
+  %ul{ class: 'list-container', colspan: 5}
+    - if @unit_type == "caster"
       - @available_units.each do |unit|
-        %tr>
-          %td>
-            %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
+        %li{class: "available-" + unit[:id].to_s}
+          %span.model-name= unit[:name]
+          %span.button-group
+            %a{href: "#", class: "add_to_list btn btn-mini btn-success", data: {'unit_id' => unit[:id],
                                            'controller' => 'army_units',
                                            'action' => 'create',
-                                           'army_id' => @army.id}}>
-              %i{ class: 'icon-circle-arrow-left' }>
-          %td>= unit[:name]
-          %td>= "+#{unit[:point_cost]}"
-- else
-  %table>
-    %tbody>
-      %th>
-      %th> Name
-      %th> FA
-      %th> Points
-
+                                           'army_id' => @army.id}}
+              %i{ class: 'icon-plus' }
+          %span.point-cost= "+#{unit[:point_cost]}"
+    - else
       - @available_units.each do |unit|
-        %tr>
-          %td>
-            %a{href: "#", class: "add_to_list", data: {'unit_id' => unit[:id],
+        %li{class: "available-" + unit[:id].to_s}
+          %span.model-name= unit[:name]
+          %span.field-allowance= unit[:field_allowance]
+          %span.button-group
+            %a{href: "#", class: "add_to_list btn btn-mini btn-success", data: {'unit_id' => unit[:id],
                                            'controller' => 'army_units',
                                            'action' => 'create',
-                                           'army_id' => @army.id}}>
-              %i{ class: 'icon-circle-arrow-left' }>
-          %td>= unit[:name]
-          %td>= unit[:field_allowance]
-          %td>= unit[:point_cost]
+                                           'army_id' => @army.id}}
+              %i{ class: 'icon-plus' }
+          %span.point-cost= unit[:point_cost]
 

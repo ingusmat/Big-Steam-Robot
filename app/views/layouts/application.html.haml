@@ -14,7 +14,7 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    %header.navbar.navbar-fixed-top
+    %header.navbar.navbar-fixed-top.page-header
       %nav.navbar-inner
         .container
           =  render 'layouts/navigation'
@@ -24,5 +24,5 @@
         .content
           = render 'layouts/messages'
           = yield
-    %footer
+    %footer.page-footer
       =render 'layouts/footer'

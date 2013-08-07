@@ -1,5 +1,5 @@
-%a{href: "#", class: "btn btn-small btn-primary list_attachables", data: {'armyid' => @army[:id],
+%a{href: "#", class: "btn btn-mini btn-primary list_attachables", data: {'armyid' => army_unit.army.id,
   'armyunitid' => army_unit.id,
   'type' => army_unit.unit.unit_type_id,
-  'factionid' => @army.faction_id}}><
-  %i{ class: 'icon-plus-sign-alt' }>
+  'factionid' => army_unit.army.faction_id}}><
+  %i{ class: 'icon-plus' }>

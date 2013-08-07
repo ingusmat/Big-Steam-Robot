@@ -1,6 +1,7 @@
-%a{href: "#", class: "btn btn-primary btn-small add", data: {'controller' => 'units',
+%a{href: "#", class: "btn btn-primary btn-mini show-available-models", data: {'controller' => 'units',
                                'action' => 'list_available_models',
                                'army_id' => @army[:id],
+                               'dom_parent_id' => @army.id.to_s + '_' + unit_type.pluralize,
                                'unit_type' => unit_type,
                                'faction_id' => @army[:faction_id]}}><
-  %i{ class: 'icon-plus-sign-alt' }><
+  %i{ class: 'icon-plus' }><

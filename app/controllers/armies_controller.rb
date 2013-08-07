@@ -46,7 +46,7 @@ class ArmiesController < ApplicationController
   def destroy
     @army = Army.find(params[:id])
     @army.destroy
-    redirect_to armies_url
+    redirect_to :back
   end
 
   private

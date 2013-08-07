@@ -1,0 +1,6 @@
+- army_units = @army.army_units.select { |army_unit| army_unit.unit.unit_type.name == unit_type }
+- army_units.each do |army_unit|
+  = render 'armies/list/unit_entry_line', army_unit: army_unit, unit_type: unit_type
+  - if army_unit.attachments
+    - army_unit.attachments.each do |attachment|
+      = render 'armies/list/unit_entry_line', army_unit: attachment, unit_type: unit_type

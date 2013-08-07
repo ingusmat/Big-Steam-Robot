@@ -1,8 +1,5 @@
-%article
-  = render "armies/header"
-  .container
-    .content
-      %div.row-fluid.article_body
-        %section#list.span6
-          = render "armies/list_table"
-        %section#available.span6
+%article.army-list
+  = render 'armies/list/header'
+  %div.article-body.row-fluid
+    = render "armies/list/models"
+    = render "armies/list/meta"
