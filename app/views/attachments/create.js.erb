@@ -1,3 +1,4 @@
-$('#list').html("<%= render "armies/list_table" %>");
-$('#available').html("<%= render "units/available_units" %>");
-<%= render('armies/button_scripts') %>
+if(!$("#<%= params[:parent_army_unit_id] %>_attachments").length()){
+  $("#<%= params[:parent_army_unit_id] %>_available_attachments").after('<li id="#army_unit_<%= params[:parent_army_unit_id] %>"><ul class="army-unit-attachments"></ul></li>');
+}
+$("#army_unit_<%= params[:parent_army_unit_id] %> ul").append("<%= escape_javascript(render 'armies/list/attachment_entry_line', army_unit: @attachment, unit_type: @attachment.unit.unit_type.name) %>");

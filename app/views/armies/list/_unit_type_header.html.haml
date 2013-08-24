@@ -9,9 +9,7 @@
   = render 'armies/list_buttons/button_group', level: 'header', unit_type: unit_type 
   %span.point-cost
     - if unit_type == 'caster'
-      - if @army.faction.game.id == 1
-        = 'Jack Points'
-      - else
-        = 'Beast Points'
+      WP
     - else
-      = 'Point Cost'
+      PC
+  %span.field-allowance FA

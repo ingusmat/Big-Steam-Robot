@@ -1,2 +1,1 @@
-$('#available').html("<%= render 'units/available_attachments' %>");
-<%= render('armies/button_scripts') %>
+$("#army_unit_<%= @parent_unit.id.to_s %>").after("<%= escape_javascript(render 'units/available_attachments') %>");

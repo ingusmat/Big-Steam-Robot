@@ -3,4 +3,4 @@
   = render 'armies/list/unit_entry_line', army_unit: army_unit, unit_type: unit_type
   - if army_unit.attachments
     - army_unit.attachments.each do |attachment|
-      = render 'armies/list/unit_entry_line', army_unit: attachment, unit_type: unit_type
+      = render 'armies/list/attachment_entry_line', attachment: attachment, unit_type: unit_type

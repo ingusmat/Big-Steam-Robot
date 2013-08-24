@@ -1,19 +1,27 @@
 %li{ id: "army_unit_" + army_unit.id.to_s, class: "unit_entry unit-" + army_unit.unit.id.to_s }
   %span.unit-name<
     = army_unit.unit[:name]
-    - if army_unit.unit.max_point_cost
-      - if army_unit.max_unit
-        &nbsp;(Max)
-      - else
-        &nbsp;(Min)
   = render 'armies/list_buttons/button_group', level: 'unit', unit_type: unit_type, army_unit: army_unit
   - if unit_type == 'caster'
     %span.point-cost= "+#{army_unit.unit[:point_cost]}"  
-  - elsif unit_type == 'unit'
-    - if army_unit.unit.max_point_cost
+  - elsif unit_type == 'unit' && army_unit.unit.max_point_cost
+    %span.point-cost
       - if army_unit.max_unit
-        %span.point-cost= army_unit.unit.max_point_cost
+        = army_unit.unit.max_point_cost
       - else
-        %span.point-cost= army_unit.unit.point_cost
+        = army_unit.unit.point_cost
   - else
-    %span.point-cost= army_unit.unit[:point_cost]  
+    %span.point-cost= army_unit.unit[:point_cost]
+  %span.field-allowance= army_unit.unit[:field_allowance]
+  - if unit_type == 'unit' && army_unit.unit.max_point_cost
+    %span.onoffswitch
+      - if army_unit.max_unit
+        %input{type: "checkbox", name: army_unit.id.to_s+"_min_max", class: "onoffswitch-checkbox min-max-unit-switch", id: army_unit.id.to_s+"_min_max", checked:'checked', data: { army_id: army_unit.army.id, army_unit_id: army_unit.id, max_unit: army_unit.max_unit } }
+        %label{class: "onoffswitch-label", for: army_unit.id.to_s+"_min_max"}
+          .onoffswitch-inner
+          .onoffswitch-switch
+      - else
+        %input{type: "checkbox", name: army_unit.id.to_s+"_min_max", class: "onoffswitch-checkbox min-max-unit-switch", id: army_unit.id.to_s+"_min_max", data: { army_id: army_unit.army.id, army_unit_id: army_unit.id, max_unit: army_unit.max_unit }}
+        %label{class: "onoffswitch-label", for: army_unit.id.to_s+"_min_max"}
+          .onoffswitch-inner
+          .onoffswitch-switch

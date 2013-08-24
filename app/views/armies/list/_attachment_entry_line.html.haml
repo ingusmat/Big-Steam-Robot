@@ -1,0 +1,9 @@
+%li{ id: "army_unit_" + attachment.child_army_unit.id.to_s, class: "unit_attachment unit_entry unit-" + attachment.child_army_unit.unit.id.to_s }
+  %span.unit-name<
+    = attachment.child_army_unit.unit[:name]
+  %span.button-group
+    = render('armies/list_buttons/remove_attachment', attachment: attachment)
+    //add button
+  %span.point-cost= attachment.child_army_unit.unit[:point_cost]
+  %span.field-allowance= attachment.child_army_unit.unit[:field_allowance]
+

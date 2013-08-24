@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def analyse_list
-    count_up_the_points 
+    @points_used = calculate_points(@army) 
     @banned_unit_ids = []
     @army.army_units.each do |army_unit|
       if army_unit.unit.field_allowance == 'c'
@@ -31,6 +31,30 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.js
     end
+  end
+
+  def calculate_points(army)
+    points_used = 0
+    army.army_units.each do |army_unit|
+      if army_unit.unit.unit_type.name == 'caster'
+        unless army_unit.attachments.empty?
+          attachment_points = 0
+          army_unit.child_army_units.each do |child|
+            attachment_points += child.unit.point_cost
+          end
+          if attachment_points < army_unit.unit.point_cost
+            points_used -= attachment_points
+          else
+            points_used -= army_unit.unit.point_cost
+          end
+        end
+      elsif army_unit[:max_unit]
+        points_used += army_unit.unit.max_point_cost
+      else
+        points_used += army_unit.unit.point_cost
+      end
+    end
+    points_used
   end
 
   private

@@ -6,3 +6,6 @@ $("#<%= @army_unit.army_id.to_s %>_<%= @army_unit.unit.unit_type.name.pluralize 
     $(".available-<%= @army_unit.unit.id.to_s %>").remove();
   }
 <% end %>
+if("<%= @army_unit.unit.unit_type.name %>" != "caster"){
+  $('#points_used').text(parseInt($('#points_used').text()) + parseInt(<%= @army_unit.unit.point_cost %>))
+}

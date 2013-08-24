@@ -1,17 +1,12 @@
-%table>
-  %tbody>
-    %th>
-    %th> Name
-    %th> FA
-    %th> Points
-
+%li{ id: @parent_unit.id.to_s + '_available_attachments', class: 'available-models' }
+  %ul{ class: 'list-container'}
     - @available_attachments.each do |unit|
-      %tr>
-        %td>
-          %a{href: "#", class: "attach_unit", data: {'attached_unit_id' => unit[:id],
+      %li
+        %span.model-name= unit[:name]
+        %span.button-group
+          %a{href: "#", class: "attach_unit btn btn-mini btn-success", data: {'unit_id' => unit[:id],
             'army_id' => @army.id,
-            'army_unit_id' => @parent_unit.id}}>
-            %i{ class: 'icon-circle-arrow-left' }>
-        %td>= unit[:name]
-        %td>= unit[:field_allowance]
-        %td>= unit[:point_cost]
+            'parent_unit_id' => @parent_unit.id}}>
+            %i{ class: 'icon-plus' }>
+        %span.point-cost= unit[:point_cost]
+        %span.field-allowance= unit[:field_allowance]

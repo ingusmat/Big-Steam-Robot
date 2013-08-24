@@ -5,15 +5,11 @@
 - else
   - if current_user != nil && current_user.id == army_unit.army.user_id
     %span.button-group
-      -if level == 'unit'
-        -if unit_type == 'unit' && army_unit.unit.max_point_cost
-          = render "armies/list_buttons/min_max", army_unit: army_unit
       - if level == 'unit'
         = render('armies/list_buttons/remove_unit', army_unit: army_unit)
-      - elsif level == 'attachment'
-        = render('armies/list_buttons/remove_attachment', attachment: attachment)
-      - if level == 'unit'
         - if unit_type == 'caster' || army_unit.unit.jack_marshall == true
           = render('armies/list_buttons/available_attachments', army_unit: army_unit)
+      - elsif level == 'attachment'
+        = render('armies/list_buttons/remove_attachment', attachment: army_unit)
 
 
