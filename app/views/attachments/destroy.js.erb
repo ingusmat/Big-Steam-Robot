@@ -1,3 +1,2 @@
-$('#list').html("<%= render "armies/list_table" %>");
-$('#available').html("");
-<%= render('armies/button_scripts') %>
+$("#army_unit_<%= @attachment.child_army_unit.id.to_s %>").remove();
+$('#points_used').text(<%= @points_used %>);

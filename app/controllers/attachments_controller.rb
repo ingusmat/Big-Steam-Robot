@@ -10,13 +10,11 @@ class AttachmentsController < ApplicationController
   end
   
   def destroy
-    attachment = Attachment.find(params[:attachmentId])
-    attachment.destroy
-    find_and_analyze_army(params[:armyid])
-    @available_units = available_units
-    respond_to do |format|
-      format.js
+    @attachment = Attachment.find(params[:attachmentId])
+    if @attachment.destroy
+      @points_used = calculate_points(@attachment.parent_army_unit.army)
     end
+    respond_to { |format| format.js }
   end
 
 end

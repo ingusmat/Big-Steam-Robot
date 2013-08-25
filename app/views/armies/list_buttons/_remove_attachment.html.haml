@@ -1,5 +1,5 @@
-%a{href: "#", class: "btn btn-danger btn-mini remove_attachment", data: {'armyid' => @army[:id],
+%a{href: "#", class: "btn btn-danger btn-mini remove_attachment", data: {'armyid' => attachment.child_army_unit.army[:id],
   'attachment_id' => attachment.id,
   'type' => attachment.child_army_unit.unit.unit_type_id,
-  'factionid' => @army.faction_id}}><
+  'factionid' => attachment.child_army_unit.army.faction_id}}><
   %i{ class: 'icon-remove' }>

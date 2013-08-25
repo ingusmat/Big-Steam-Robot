@@ -105,6 +105,9 @@ section.army-list {
       border-bottom: 1px solid #444444;
       &.available-models {
         background-color: rgba(0,0,0,.3);
+        max-height: 130px;
+        overflow-y: scroll;
+        overflow-x: hidden;
         padding: 0;
         ul {
           margin: 0;
@@ -120,49 +123,14 @@ section.army-list {
           }
         }
       }
+      &.unit-attachment {
+        list-style: disc outside none;
+        margin-left: 28px;
+        padding-left: 5px;
+      }
     }
   }
 
-
-  tr {
-    border-bottom: 1px solid rgba(50,50,50,0.8);
-    &.total-points {
-      border-top: 2px solid rgba(50,50,50,0.8);
-    }
-    th,
-    td {
-      padding: 5px;
-      text-align: left;
-    }
-    a {
-      color: #cccccc;
-      &:hover {
-        color: white;
-      }
-    }
-    th {
-      background: rgba(60,60,60,.3) !important;
-      color: #aaaaaa;
-      &.point-cost {
-        color: white;
-        border-left: 1px #555555 solid;
-      }
-    }
-    td {
-      color: white;
-      &.point-cost,
-      &.point-cost {
-        text-align: right;
-      }
-      &.attachment {
-        padding-left: 20px;
-      }
-    }
-    .button {
-      border-left: 1px #555555 solid;
-      width: 20px;
-    }
-  }
 }
 .onoffswitch {
     position: relative; width: 72px; display: inline-block;
